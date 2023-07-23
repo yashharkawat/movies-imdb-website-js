@@ -4,14 +4,14 @@ const poster_request="https://img.omdbapi.com/?apikey=f2261eb2&";
 
 let page=1;
 let search_text='harry';
-let total_results=0;
+let total_results=858;
 async function get_data(search_text,index){
     const url=`${data_request}s=${search_text}&page=${index}`;
     console.log(url);
     const request=await fetch(url);
     //console.log(url);
     const data=await request.json();
-    total_results=data.totalResults;
+    total_results=await data.totalResults;
     //console.log(data.totalResults);
     const movies=data.Search;
 
@@ -28,8 +28,22 @@ async function get_description(id){
     console.log(data);
     //console.log(movies);
 }
-get_description('tt0241527');
-document.addEventListener('DOMContentLoaded',()=>{
+//get_description('tt0241527');
+document.addEventListener('DOMContentLoaded',async ()=>{
+
+    if(localStorage.length==0){
+        //console.log('hi');
+        const movies=await get_data('harry',1);
+        //console.log(movies);
+        display_movies(movies);
+        
+        localStorage.setItem('movies',JSON.stringify(movies));
+        
+    }
+    else{
+        const movies=JSON.parse(localStorage.getItem('movies'));
+        display_movies(movies);
+    }
     const search_button=document.querySelector('.search_button');
     search_button.addEventListener('click',async (e)=>{
         //console.log('clicked');
@@ -79,7 +93,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             movie_poster.classList.add('movie_poster');
             
             movie_poster.addEventListener('click',(e)=>{
-                localStorage.setItem('id',e.target.getAttribute('id'));
+                localStorage.setItem('imdb_id',e.target.getAttribute('id'));
                 window.location.href='./description.html';
 
             })
@@ -97,10 +111,18 @@ document.addEventListener('DOMContentLoaded',()=>{
             const svg_element = svg_DOM.documentElement;
             svg_element.classList.add('movie_rating');
 
+            svg_element.addEventListener('click',(e)=>{
+                localStorage.setItem('prompt_id',e.target.parentNode.getAttribute('class').split(' ')[1]);
+                window.location.href='./prompt.html';
+                console.log(e.target.parentNode.getAttribute('class').split(' ')[1]);
+                //console.log(e.target.parentNode.getAttribute(imdb_id));
+                console.log(e.target.parentNode);
+
+            })
             movie_description.append(movie_name,svg_element);
             movie_element.append(movie_poster,movie_description);
             movie_element.classList.add('movie');
-
+            movie_description.classList.add(movie.imdbID);
             const container_class=`.container${Math.floor(index/5)+1}`;
             //console.log(container_class);
             const container=document.querySelector(container_class);

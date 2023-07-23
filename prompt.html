@@ -1,83 +1,43 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        /* Add the CSS for inactive stars */
-        .ipc-starbar__star--inactive svg{
-            fill: none;
-            stroke: #c0c0c0;
-            
-            background-color: yellow;
-        }
-    </style>
-</head>
+    <script src="prompt.js"></script>
+    <link rel="stylesheet" href="prompt.css">
+<head>
 <body>
-    <div class="container">
-        <h3 class="content_header">Rate this</h3>
-        <div class="content_title">Mission: Impossible - Fallout</div>
-        <div class="rating_container">
-            <button class="rating_button" data-rating="1" role="button" aria-label="Rate 1" tabindex="0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="presentation">
-                    <path fill="none" d="M0 0h24v24H0V0z"></path>
-                    <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
-                </svg>
-            </button>
-            <button class="rating_button" data-rating="2" role="button" aria-label="Rate 1" tabindex="0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="presentation">
-                    <path fill="none" d="M0 0h24v24H0V0z"></path>
-                    <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
-                </svg>
-              </button>
-              <button class="rating_button" data-rating="3" role="button" aria-label="Rate 1" tabindex="0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="presentation">
-                    <path fill="none" d="M0 0h24v24H0V0z"></path>
-                    <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
-                </svg>
-              </button>
-              <button class="rating_button" data-rating="4" role="button" aria-label="Rate 1" tabindex="0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="presentation">
-                    <path fill="none" d="M0 0h24v24H0V0z"></path>
-                    <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
-                </svg>
-              </button>
-              <button class="rating_button" data-rating="5" role="button" aria-label="Rate 1" tabindex="0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="presentation">
-                    <path fill="none" d="M0 0h24v24H0V0z"></path>
-                    <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
-                </svg>
-              </button>
-            <!-- Add other rating buttons with data-rating attribute from 2 to 10 -->
-        </div>
+  <!-- Modal container -->
+<div id="ratingPrompt" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 class="prompt-header">Rate This</h3>
+      <div class="movie_name"></div>
+      <div class="rating-stars">
+        <svg xmlns="http://www.w3.org/2000/svg" class="svg" data-rating="1" width="24" height="24" fill="currentColor" role="presentation">
+            <path fill="none" d="M0 0h24v24H0V0z"></path>
+            <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="svg" data-rating="2" width="24" height="24" fill="currentColor" role="presentation">
+            <path fill="none" d="M0 0h24v24H0V0z"></path>
+            <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
+        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="svg" data-rating="3" width="24" height="24" fill="currentColor" role="presentation">
+            <path fill="none" d="M0 0h24v24H0V0z"></path>
+            <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
+        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="svg" data-rating="4" width="24" height="24" fill="currentColor" role="presentation">
+            <path fill="none" d="M0 0h24v24H0V0z"></path>
+            <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
+        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="svg" data-rating="5" width="24" height="24" fill="currentColor" role="presentation">
+            <path fill="none" d="M0 0h24v24H0V0z"></path>
+            <path d="M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
+        </svg>
+      </div>
+      <button class="submit-rating">Rate</button>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded',(e)=>{
-            const ratingButtons = document.querySelectorAll('.rating_button');
-
-        function handleRatingClick(event) {
-            const selectedRating = parseInt(event.target.getAttribute('data-rating'));
-            console.log(event.target);
-            // Highlight all the stars previous to the selected rating
-            for (let i = 0; i < ratingButtons.length; i++) {
-                const ratingValue = parseInt(ratingButtons[i].getAttribute('data-rating'));
-                console.log(selectedRating);
-                if (ratingValue >selectedRating) {
-                    ratingButtons[i].classList.remove('ipc-starbar__star--inactive');
-                } else {
-                    ratingButtons[i].classList.add('ipc-starbar__star--inactive');
-                }
-            }
-        }
-
-        // Add click event listeners to all rating buttons
-        ratingButtons.forEach(button => {
-            button.addEventListener('click', handleRatingClick);
-        });
-        })
-    </script>
+  </div>
 </body>
 </html> 
