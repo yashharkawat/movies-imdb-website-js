@@ -68,3 +68,6 @@ body{
 .middle_pages{
     display: flex;
 }
+.movie_poster{
+    cursor: pointer;
+}

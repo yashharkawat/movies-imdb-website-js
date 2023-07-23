@@ -19,7 +19,16 @@ async function get_data(search_text,index){
     return movies;
     //console.log(movies);
 }
-
+async function get_description(id){
+    const url=`${data_request}i=${id}`;
+    //console.log(url);
+    const request=await fetch(url);
+    //console.log(url);
+    const data=await request.json();
+    console.log(data);
+    //console.log(movies);
+}
+get_description('tt0241527');
 document.addEventListener('DOMContentLoaded',()=>{
     const search_button=document.querySelector('.search_button');
     search_button.addEventListener('click',async (e)=>{
@@ -60,11 +69,20 @@ document.addEventListener('DOMContentLoaded',()=>{
         movies.forEach((movie,index)=>{
             //console.log(movie);
             const movie_element=document.createElement('div');
+            //const movie_image=document.createElement('a');
             const movie_poster=document.createElement('img');
             movie_poster.setAttribute('src',movie.Poster);
+            movie_poster.setAttribute('id',movie.imdbID);
             //console.log(movie.image_url);
-
+            //movie_image.setAttribute('href','./description.html');
+            //movie_image.append(movie_poster);
             movie_poster.classList.add('movie_poster');
+            
+            movie_poster.addEventListener('click',(e)=>{
+                localStorage.setItem('id',e.target.getAttribute('id'));
+                window.location.href='./description.html';
+
+            })
 
             const movie_description=document.createElement('div');
             movie_description.classList.add('movie_description');
@@ -177,29 +195,104 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
     
+    
+   
+    
+    
+
+    
+    
+    
 })
 
-
-
+// {Title: "Harry Potter and the Sorcerer's Stone", Year: '2001', Rated: 'PG', Released: '16 Nov 2001', Runtime: '152 min', …}
+// Actors
+// : 
+// "Daniel Radcliffe, Rupert Grint, Richard Harris"
+// Awards
+// : 
+// "Nominated for 3 Oscars. 19 wins & 69 nominations total"
+// BoxOffice
+// : 
+// "$318,886,962"
+// Country
+// : 
+// "United Kingdom, United States"
+// DVD
+// : 
+// "28 May 2002"
+// Director
+// : 
+// "Chris Columbus"
+// Genre
+// : 
+// "Adventure, Family, Fantasy"
+// Language
+// : 
+// "English, Latin"
+// Metascore
+// : 
+// "65"
+// Plot
+// : 
+// "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
 // Poster
 // : 
-// "https://m.media-amazon.com/images/M/MV5BMGVmMWNiMDktYjQ0Mi00MWIxLTk0N2UtN2ZlYTdkN2IzNDNlXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg"
+// "https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg"
+// Production
+// : 
+// "N/A"
+// Rated
+// : 
+// "PG"
+// Ratings
+// : 
+// Array(3)
+// 0
+// : 
+// {Source: 'Internet Movie Database', Value: '7.6/10'}
+// 1
+// : 
+// {Source: 'Rotten Tomatoes', Value: '81%'}
+// 2
+// : 
+// {Source: 'Metacritic', Value: '65/100'}
+// length
+// : 
+// 3
+// [[Prototype]]
+// : 
+// Array(0)
+// Released
+// : 
+// "16 Nov 2001"
+// Response
+// : 
+// "True"
+// Runtime
+// : 
+// "152 min"
 // Title
 // : 
-// "Harry Potter and the Deathly Hallows: Part 2"
+// "Harry Potter and the Sorcerer's Stone"
 // Type
 // : 
 // "movie"
+// Website
+// : 
+// "N/A"
+// Writer
+// : 
+// "J.K. Rowling, Steve Kloves"
 // Year
 // : 
-// "2011"
-// image_url
-// : 
-// "https://img.omdbapi.com/?apikey=f2261eb2&s=harry&i=tt1201607"
+// "2001"
 // imdbID
 // : 
-// "tt1201607"
-// [[Prototype]]
+// "tt0241527"
+// imdbRating
 // : 
-// Object
-
+// "7.6"
+// imdbVotes
+// : 
+// "813,711"
