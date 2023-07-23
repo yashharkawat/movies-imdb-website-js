@@ -1,0 +1,36 @@
+body{
+    background-color: rgb( 26,26,26 );
+    color: #fff;
+}
+.search_button{
+    cursor: pointer;
+}
+
+.movie{
+    width:180px;
+    height:320px;
+}
+.movie_poster{
+    width: 100%;
+}
+.container1,.container2{
+    display: flex;
+    justify-content: space-evenly;
+    width:1200px;
+    margin-bottom: 20px;
+}
+.movie_description{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.movie_rating {
+    width:10%;
+    color:blue;
+}
+.movie_name{
+    width:85%;
+}
+.nav_bar{
+    margin-bottom: 20px;
+}
