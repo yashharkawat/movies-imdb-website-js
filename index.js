@@ -1,38 +1,25 @@
 const api_key="f2261eb2";
 const data_request="https://www.omdbapi.com/?apikey=f2261eb2&";
 const poster_request="https://img.omdbapi.com/?apikey=f2261eb2&";
-//let movies=[];
 
-// async function get_data(search_text){
-//     const url=`${data_request}s=${search_text}`;
-//     const request=await fetch(url);
-//     //console.log(url);
-//     const data=await request.json();
-//     //movies=data.Search;
-//     //console.log(movies);
-// }
-
-async function get_poster(search_text){
-    const url=`${data_request}s=${search_text}`;
+let page=1;
+let search_text='harry';
+let total_results=0;
+async function get_data(search_text,index){
+    const url=`${data_request}s=${search_text}&page=${index}`;
+    console.log(url);
     const request=await fetch(url);
     //console.log(url);
     const data=await request.json();
-    let movies=data.Search;
-    await movies.forEach(async (movie)=>{
-        const url=`${poster_request}s=${search_text}&i=${movie.imdbID}`;
-        const request=await fetch(url);
-        const data=request.url;
-        //console.log(request.json());
-        movie.image_url=data;
-        //console.log(request_url);
-        //console.log(data);
-    })
-    //console.log(movies);
+    total_results=data.totalResults;
+    //console.log(data.totalResults);
+    const movies=data.Search;
+
+    
     return movies;
-  //console.log(data);
+    //console.log(movies);
 }
-//get_poster('harry');
-//get_data("harry");
+
 document.addEventListener('DOMContentLoaded',()=>{
     const search_button=document.querySelector('.search_button');
     search_button.addEventListener('click',async (e)=>{
@@ -41,9 +28,10 @@ document.addEventListener('DOMContentLoaded',()=>{
         const search_string=search.value;
         //console.log(search);
         search.value=null;
-        const movies=await get_poster(search_string);
+        const movies=await get_data(search_string,1);
         display_movies(movies);
-        //=get_poster(se)
+        search_text=search_string;
+        //=get_data(se)
         //get_data(search_string);
     })
     document.addEventListener('keypress',async (e)=>{
@@ -52,15 +40,17 @@ document.addEventListener('DOMContentLoaded',()=>{
             const search_string=search.value;
             if(search_string!==''){
                 search.value=null;
-                get_poster(search_string);
-                const movies=await get_poster(search_string);
+                get_data(search_string);
+                const movies=await get_data(search_string,1);
                 display_movies(movies);
+                search_text=search_string;
                 //get_data(search_string);
             }
         }
     })
     
     function display_movies(movies){
+        page_navigation(Math.ceil(total_results/10),page);
        // console.log(movies);
        const container=document.querySelector('.container1');
        container.innerHTML=null;
@@ -99,8 +89,97 @@ document.addEventListener('DOMContentLoaded',()=>{
             container.appendChild(movie_element);
         })
     }
+    const previous=document.querySelector('.previous');
+    const next=document.querySelector('.next');
 
+    previous.addEventListener('click',async (e)=>{
+       
+        if(page>1){
+            page--;
+            const movies=await get_data(search_text,page);
+            display_movies(movies);
+        }
+        
+    })
+    next.addEventListener('click',async (e)=>{
+        page++;
+        const movies=await get_data(search_text,page);
+        display_movies(movies);
+    })
+
+    function create_pages(num){
+        const element=document.createElement('button');
+        element.classList.add('pages');
+        element.textContent=num;
+        
+        element.addEventListener('click',async (e)=>{
+            page=e.target.innerText;
+            const movies=await get_data(search_text,page);
+            display_movies(movies);
+        })
+        return element;
+    }
+    
+    function page_navigation(total_pages,page_num){
+        const page_navigation=document.querySelector('.page_number_navigation');
+        page_navigation.innerHTML=null;
+        page_num=parseInt(page_num);
+        if(total_pages>5){
+            const starting_pages=document.createElement('div');    
+            const ending_pages=document.createElement('div'); 
+            const middle_pages=document.createElement('div'); 
+            const text_element=document.createElement('div'); 
+            text_element.textContent='...........';
+            const text_element2=document.createElement('div'); 
+            text_element2.textContent='...........';
+            middle_pages.appendChild(text_element2);
+            middle_pages.classList.add('middle_pages');
+            if(page_num>2&&page_num<total_pages-1){
+                starting_pages.appendChild(create_pages(1));
+                
+
+                
+                for(let i=-1;i<=1;i++){
+                    const page=page_num+i;
+                    console.log(page);
+                    middle_pages.appendChild(create_pages(page));
+                }
+                middle_pages.appendChild(text_element);
+                console.log(middle_pages);
+                ending_pages.appendChild(create_pages(total_pages));
+            }
+            else if(page_num<=2){
+                for(let i=1;i<=3;i++){
+                    starting_pages.appendChild(create_pages(i));
+                }
+                middle_pages.appendChild(text_element);
+                ending_pages.appendChild(create_pages(total_pages));
+            }
+            else{
+                starting_pages.appendChild(create_pages(1));
+                middle_pages.appendChild(text_element);
+                for(let i=2;i>=0;i--){
+                    const page=total_pages-i;
+                    ending_pages.appendChild(create_pages(page));
+                }
+            }
+            //const pages=document.createElement('div');
+            page_navigation.append(starting_pages,middle_pages,ending_pages);
+
+        }
+        else{
+            for(let i=1;i<=total_pages;i++){
+                page_navigation.append(create_pages(i));
+            }
+            
+        }
+    
+    }
+
+    
 })
+
+
 
 // Poster
 // : 

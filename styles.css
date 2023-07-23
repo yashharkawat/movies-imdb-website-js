@@ -8,10 +8,11 @@ body{
 
 .movie{
     width:180px;
-    height:320px;
+    height:280px;
 }
 .movie_poster{
     width: 100%;
+    height:250px;
 }
 .container1,.container2{
     display: flex;
@@ -27,10 +28,43 @@ body{
 .movie_rating {
     width:10%;
     color:blue;
+    cursor: pointer;
 }
 .movie_name{
     width:85%;
 }
 .nav_bar{
     margin-bottom: 20px;
+    height:50px;
+    background-color: rgb(31,31,31);
+}
+
+.previous, .next{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.previous img, .next img{
+    width:50px;
+    height: 50px;
+    
+}
+.previous_next_page{
+    display: flex;
+    justify-content: space-between;
+}
+.page_number_navigation{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.page_number_navigation button{
+    margin-left: 5px;
+    margin-right: 5px;
+    width:30px;
+    height:30px;
+    cursor:pointer;
+}
+.middle_pages{
+    display: flex;
 }
