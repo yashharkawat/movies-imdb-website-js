@@ -1,3 +1,15 @@
 .svg{
     cursor: pointer;
   }
+
+.submit-rating{
+  background-color: goldenrod;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width:100px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+}
