@@ -8,11 +8,11 @@ body{
 
 .movie{
     width:180px;
-    height:280px;
+    height:290px;
 }
 .movie_poster{
     width: 100%;
-    height:250px;
+    height:230px;
 }
 .container1,.container2{
     display: flex;
@@ -25,13 +25,23 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-.movie_rating {
+.movie_rating{
+    color:blue;
+    cursor: pointer;
+}
+.movie_rating svg{
     width:10%;
     color:blue;
     cursor: pointer;
 }
+.rating{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .movie_name{
-    width:85%;
+    width:80%;
 }
 .nav_bar{
     margin-bottom: 20px;

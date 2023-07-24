@@ -1,8 +1,9 @@
+let rating=0;
 document.addEventListener('DOMContentLoaded', async (e) => {
     const rating_buttons = document.querySelector('.rating-stars');
     rating_buttons.childNodes.forEach((child)=>{
         child.addEventListener('click',(e)=>{
-            const rating=e.target.getAttribute('data-rating');
+            rating=e.target.getAttribute('data-rating');
             add_rating(rating);
             localStorage.setItem('rating',rating);
         })
@@ -20,9 +21,36 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     const title=document.querySelector('.movie_name');
     title.textContent=await data.Title;
     const rate=document.querySelector('.submit-rating');
-rate.addEventListener('click',(e)=>{
+    rate.addEventListener('click',(e)=>{
     window.location.href='index.html';
+    const new_movie={Poster:data.Poster,Title:data.Title,Year:data.DVD.split(' ')[2],imdbID:data.imdbID,Rating:rating};
+    //let index=localStorage.getItem('index');
+    let movies=JSON.parse(localStorage.getItem('movies'));
+
+    let k=0;
+    movies.forEach((movie)=>{
+        if(movie.imdbID==new_movie.imdbID){
+            movie.Rating=new_movie.Rating;
+            k++;
+        }
+    })
+    if(k==0){
+        movies.forEach(movie=>{
+            if("Rating" in movie){
+            }
+            else if(k==0){
+                movie=new_movie;
+                k++;
+            }
+        })
+    }
+    if(k==0){
+        movies[0]=new_movie;
+    }
+    localStorage.setItem('movies',JSON.stringify(movies));
 })
+
+    
 
 })
 function add_rating(rating){
