@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     const data_request="https://www.omdbapi.com/?apikey=f2261eb2&";
 
     const id=localStorage.getItem('prompt_id');
-    console.log(id);
+    //console.log(id);
     const url=`${data_request}i=${id}`;
     //console.log(url);
     const request=await fetch(url);
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         if(movie.imdbID==new_movie.imdbID){
             movie.Rating=new_movie.Rating;
             k++;
+            //console.log('hi');
         }
     })
     if(k==0){
@@ -39,13 +40,20 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             if("Rating" in movie){
             }
             else if(k==0){
-                movie=new_movie;
+                
+                movie.Rating=new_movie.Rating;
+                movie.Poster=new_movie.Poster;
+                movie.imdbID=new_movie.imdbID;
+                movie.Year=new_movie.Year;
+                movie.Title=new_movie.Title;
                 k++;
+                //console.log('by');
             }
         })
     }
     if(k==0){
         movies[0]=new_movie;
+        //console.log('haha');
     }
     localStorage.setItem('movies',JSON.stringify(movies));
 })

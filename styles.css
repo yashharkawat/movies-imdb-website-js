@@ -34,6 +34,14 @@ body{
     color:blue;
     cursor: pointer;
 }
+.search{
+    width:400px;
+    padding:5px 10px;
+    margin-left: 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
 .rating{
     display: flex;
     flex-direction: column;
@@ -44,7 +52,9 @@ body{
     width:80%;
 }
 .nav_bar{
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height:50px;
     background-color: rgb(31,31,31);
 }
@@ -80,4 +90,10 @@ body{
 }
 .movie_poster{
     cursor: pointer;
+}
+
+@media only screen and (min-width:1200px) {
+    .container1,.container2{
+        width:100%;
+    }
 }
