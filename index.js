@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         display_movies(movies);
         localStorage.setItem('movies', JSON.stringify(movies));
         localStorage.setItem('index', index);
+        localStorage.setItem('search_text',search_text);
     } else {
         const movies = JSON.parse(localStorage.getItem('movies'));
         display_movies(movies);
